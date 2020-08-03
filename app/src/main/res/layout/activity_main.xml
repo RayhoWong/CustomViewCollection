@@ -8,15 +8,18 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <TableLayout
+    <com.google.android.material.tabs.TabLayout
         android:id="@+id/tablayout"
+        app:tabBackground="@color/gray_white"
         android:layout_width="match_parent"
-        android:layout_height="50dp"/>
+        android:layout_height="wrap_content"/>
+
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewpager"
+        android:background="@color/white"
+        android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-
+        android:layout_height="0dp"/>
 
 </LinearLayout>
