@@ -2,12 +2,17 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:background="@color/black"
     android:layout_height="match_parent">
 
-    <TextView
-        android:text="PAGE_ONE"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <com.rayho.views.NeteasyParticleView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
         android:layout_centerInParent="true"/>
+
+<!--    <com.rayho.views.DimPleView-->
+<!--        android:layout_centerInParent="true"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="300dp"/>-->
 
 </RelativeLayout>
