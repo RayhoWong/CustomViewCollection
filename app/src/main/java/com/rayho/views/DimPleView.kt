@@ -47,6 +47,7 @@ class DimPleView(context: Context?, attrs: AttributeSet?) : View(context, attrs)
         paint.isAntiAlias = true
     }
 
+
     private fun updateParticle(fl: Float) {
         particleList.forEachIndexed { index, particle ->
             if (particle.offSet > particle.maxOffSet) {
