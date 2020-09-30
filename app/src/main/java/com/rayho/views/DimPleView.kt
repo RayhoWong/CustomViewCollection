@@ -59,7 +59,6 @@ class DimPleView(context: Context?, attrs: AttributeSet?) : View(context, attrs)
 //                (mWidth / 2 + cos(particle.angle) * (diffusionRadius + particle.offSet)).toFloat() + particle.offSetX * particle.direction particle.x =
                 (mWidth / 2 + cos(particle.angle) * (diffusionRadius + particle.offSet)).toFloat()
 
-
             if (particle.y > mHeight / 2) {
                 particle.y =
                     (sin(particle.angle) * (diffusionRadius + particle.offSet) + mHeight / 2).toFloat()
