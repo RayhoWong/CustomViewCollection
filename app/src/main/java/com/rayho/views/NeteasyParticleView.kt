@@ -4,6 +4,7 @@ import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
+import android.util.Log
 import android.view.View
 import android.view.animation.LinearInterpolator
 import java.util.*
@@ -11,6 +12,7 @@ import kotlin.math.acos
 import kotlin.math.cos
 import kotlin.math.sin
 import kotlin.random.Random
+import kotlin.system.measureTimeMillis
 
 /**
  * @Description:
@@ -50,10 +52,13 @@ class NeteasyParticleView(context: Context, attrs: AttributeSet) : View(context,
 
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
-        particleList.forEachIndexed { index, particle ->
-            paint.alpha = ((1f - particle.offset / particle.maxOffset) * 225f).toInt()
-            canvas?.drawCircle(particle.x, particle.y, particleRadius, paint)
+        val time = measureTimeMillis {
+            particleList.forEachIndexed { index, particle ->
+                paint.alpha = ((1f - particle.offset / particle.maxOffset) * 225f).toInt()
+                canvas?.drawCircle(particle.x, particle.y, particleRadius, paint)
+            }
         }
+//        Log.d(this.javaClass.name,"绘制时间：${time}")
     }
 
 
@@ -82,7 +87,7 @@ class NeteasyParticleView(context: Context, attrs: AttributeSet) : View(context,
         path.addCircle(mWidth / 2, mHeight / 2, innerRadius, Path.Direction.CCW)
         pathMeasure.setPath(path, false)
         for (i in 0..particleNumber) {
-            pathMeasure.getPosTan(i / particleNumber * pathMeasure.length, pos, tan)
+            pathMeasure.getPosTan(i / particleNumber.toFloat() * pathMeasure.length, pos, tan)
             val x = Random.nextInt(6) -3f + pos[0]
             val y = Random.nextInt(6) - 3f + pos[1]
             val angle = acos(((pos[0] - mWidth / 2) / innerRadius)).toDouble()
@@ -95,7 +100,7 @@ class NeteasyParticleView(context: Context, attrs: AttributeSet) : View(context,
                     y,
                     particleRadius,
                     offset.toFloat(),
-                    speed.toFloat(),
+                    speed,
                     maxOffset.toFloat(),
                     angle
                 )
